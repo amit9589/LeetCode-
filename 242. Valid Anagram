@@ -1,0 +1,30 @@
+// JAVA, Method -> 1
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        char s1[] = s.toCharArray() ;
+        char t1[] = t.toCharArray() ;
+        Arrays.sort(s1) ;Arrays.sort(t1) ;
+        s = new String(s1) ;
+        t = new String(t1) ; 
+
+        if(s.equals(t)) return true ;
+        else return false ;
+    }
+}
+
+// JAVA, Method -> 2 
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        //to store frequency
+       char[] freq = new char[26] ;
+       // store freq at every index
+       for(char ch : s.toCharArray()) freq[ch-'a']++;
+       // decrease freq at every index
+       for(char ch : t.toCharArray()) freq[ch-'a']--;
+       //antwhere freq is > 0 ,mtlb ANAGRAM nahi he 
+       for(int i = 0 ; i < freq.length ; i++ ) if(freq[i] != 0 ) return false;
+
+       return true; // for every condition return true
+    }
+
+}
