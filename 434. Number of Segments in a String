@@ -1,0 +1,16 @@
+
+
+/////////// JAVA ///////////
+
+class Solution {
+    public int countSegments(String s) {
+
+        // agar string 0 he ya sirf " " space he to return 0 
+        if (s == null || s.trim().isEmpty()) return 0;
+
+        //else string ko " " split karo and length return kar do
+        String[] sp = s.trim().split("\\s+");
+        
+        return sp.length;
+    }
+}
