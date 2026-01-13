@@ -1,0 +1,44 @@
+///////////// --- JAVA --- //////////////////
+
+class Solution {
+    public String convert(String s, int n) {
+
+        if (n == 1 || s.length() <= n) return s;
+
+        // rows = n, columns = s.length()
+        char[][] storage = new char[n][s.length()];
+
+        int i = 0, j = 0, k = 0;
+        boolean down = true;
+
+        while (k < s.length()) {
+
+            storage[i][j] = s.charAt(k++);
+            
+            // directin
+            if (i == 0) down = true;
+            else if (i == n - 1) down = false;
+
+            // agar sabhi ro ho gayi ho vertically then switch to DIAGONALLY
+            if (down) {
+                i++;
+            } else {
+                i--;
+                j++;
+            }
+        }
+
+        StringBuilder ans = new StringBuilder();
+
+        for (char[] row : storage) {
+            for (char c : row) {
+                // empty char value is /u0000
+                if (c != '\u0000') {
+                    ans.append(c);
+                }
+            }
+        }
+
+        return ans.toString();
+    }
+}
